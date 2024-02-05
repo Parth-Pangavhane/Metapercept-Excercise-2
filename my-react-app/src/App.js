@@ -1,8 +1,8 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Dashboard from "./Dashboard";
-import CreateClass from "./CreateClass";
-import UpdateClass from "./UpdateClass";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Dashboard from './Dashboard';
+import CreateClass from './CreateClass';
+import UpdateClass from './UpdateClass';
 
 function App() {
     return ( <
@@ -13,17 +13,17 @@ function App() {
         Switch >
         <
         Route path = "/"
-        extract component = { Dashboard }
+        exact component = { Dashboard }
         /> <
         Route path = "/create"
         component = { CreateClass }
         /> <
         Route path = "/update/:id"
         component = { UpdateClass }
-        /> < /
-        Switch > < /
-        div > < /
-        Router >
+        /> <
+        /Switch> <
+        /div> <
+        /Router>
     );
 }
 

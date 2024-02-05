@@ -1,41 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from ' react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-function CrearteClass() {
-    const [name, setNmae] = useState(' ');
+function CreateClass() {
+    const [name, setName] = useState('');
     const [teacher, setTeacher] = useState('');
     const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const newClass = {
-            name,
-            Teacher
-        };
+        const newClass = { name, teacher };
 
         axios.post('http://localhost:3000/classes', newClass)
-            .then((response) => {
+            .then(response => {
                 console.log('Class created:', response.data);
                 history.push('/');
             })
             .catch(error => {
-                console.error('Error creating Class', error);
+                console.error('Error creating class:', error);
             });
-
     };
-
-
-
-
 
     return ( <
         div >
         <
-        h1 > Create New Class < /h1>  <
-        form on Submit = {
-            handleSubmit
-        } >
+        h1 > Create New Class < /h1> <
+        form onSubmit = { handleSubmit } >
         <
         div >
         <
@@ -43,24 +33,23 @@ function CrearteClass() {
         input type = "text"
         value = { name }
         onChange = {
-            (e) => setName(e.target.value)
-        }
-        required / > < /
-        div >
+            (e) => setName(e.target.value) }
+        required / >
         <
+        /div> <
         div >
         <
         label > Teacher: < /label> <
         input type = "text"
         value = { teacher }
         onChange = {
-            (e) => setTeacher(e.target.value)
-        }
-        required / > < /
-        div >
+            (e) => setTeacher(e.target.value) }
+        required / >
         <
-        button type = "submit" > Create < /button> </form > < /
-        div >
+        /div> <
+        button type = "submit" > Create < /button> <
+        /form> <
+        /div>
     );
 }
 

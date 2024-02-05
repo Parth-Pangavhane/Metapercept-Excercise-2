@@ -3,15 +3,15 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function Dashboard() {
-    const [classes, setCLlasses] = useState([]);
+    const [classes, setClasses] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:3000/classes')
             .then(response => {
-                setCLlasses(response.data);
+                setClasses(response.data);
             })
             .catch(error => {
-                console.errror("Error getting in classes:", error);
+                console.error('Error fetching classes:', error);
             });
     }, []);
 
@@ -26,16 +26,12 @@ function Dashboard() {
         <
         tr >
         <
-        th > I D < /th> <
+        th > ID < /th> <
         th > Name < /th> <
-        th > Teacher < /th> < 
-        th > Action < /th>
-
-
-
-        <
-        /tr>< /thead >
-        <
+        th > Teacher < /th> <
+        th > Action < /th> < /
+        tr > <
+        /thead> <
         tbody > {
             classes.map(classItem => ( <
                 tr key = { classItem.id } >
@@ -43,27 +39,18 @@ function Dashboard() {
                 td > { classItem.id } < /td> <
                 td > { classItem.name } < /td> <
                 td > { classItem.teacher } < /td> <
-                td > < Link to = { `/update/${classItem.id}` } > Edit < /Link> <
-                button > Delete < /button>< /td >
-
-
-
+                td >
                 <
-                /
-                tr >
+                Link to = { /update/$ { classItem.id } } > Edit < /Link> <
+                button > Delete < /button> < /
+                td > <
+                /tr>
             ))
         } <
-        /tbody>
-
-
-
-        <
-        /
-        table >
-        <
+        /tbody> < /
+        table > <
         /div>
     );
 }
-
 
 export default Dashboard;
